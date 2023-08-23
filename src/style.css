@@ -34,7 +34,7 @@ li > a {
 .header-title {
     margin-left: 6px;
     font-size: large;
-    font-weight: 200;
+    font-weight: 600;
 }
 .logo {
     height: 250px;
@@ -54,7 +54,7 @@ li > a {
     margin: 20px 0px 10px 0px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
     background-color: rgb(212, 146, 65);
     padding: 20px;
@@ -82,4 +82,37 @@ li > a {
     width: 100%;
     padding: 12px;
     font-size: small;
+}
+.mainpanel {
+    background-image: url('./images//image54.png');
+    background-size: cover;
+    height: 60vh;
+    width: 100vw;
+    
+    padding: 30px 25px;
+}
+.mainpanel > h1 {
+    color: white;
+    margin-top: 20px;
+}
+.mainpanel > p {
+    color: white;
+    margin: 25px 15px;
+    font-weight: 500;
+}
+.findyourvan {
+    width: 95%;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    background-color: rgb(169, 116, 18);
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    display: block;
+    border: none;
+    box-shadow: 2px 2px 2px gray;
 }

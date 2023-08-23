@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <div>
         <div className='navbar'>
-        <h1 className='header-title'>#VANLIFE</h1>
+        <h1 className='header-title'><Link to="https://www.google.com">#VANLIFE</Link></h1>
         <nav>
         <ul>
             <li><Link to="/">Home</Link></li>
