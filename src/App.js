@@ -4,7 +4,6 @@ import logo from '../src/images/image54.png'
 function App() {
   return (
     <div className="App">
-      <Header />
       <div className="mainpanel">
         <h1>You got the travel plans, we got the travel vans</h1>
         <p>Add adventure to your life by joining the #vanilife movement, Rent the perfect van to make

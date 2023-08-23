@@ -4,7 +4,6 @@ import logo from '../images/image55.png';
 export default function About() {
   return (
     <div className="App">
-      <Header />
         <img className="logo" src={logo} />
         <section>
         <h2 className="title">Don’t squeeze in a sedan when you could relax in a van.</h2>
