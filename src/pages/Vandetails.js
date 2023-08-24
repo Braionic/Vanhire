@@ -31,13 +31,12 @@ export default function Vandetails() {
    <div className='vanitems'>
     <img className='vanimg2' src={Data.imageUrl} />
     <div className='name-price2'>
-                <p>{Data.name}</p>
-                <p>{`$${Data.price}`}</p>
-            </div>
-            <button className='typebtn2' style={styles}>{Data.type}</button>
-            <p className='description'>{Data.description}</p>
+        <p>{Data.name}</p>
+        <p>{`$${Data.price}`}</p>
+    </div>
+        <button className='typebtn2' style={styles}>{Data.type}</button>
+        <p className='description'>{Data.description}</p>
    </div>
    </section>
-  )
-  
+  )  
 }
