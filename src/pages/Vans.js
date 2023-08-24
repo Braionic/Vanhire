@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 export default function Vans() {
     const [Data, setData] = useState([])
     useEffect(()=>{
@@ -8,14 +9,32 @@ export default function Vans() {
     }, [])
 
 let van = Data.map((van)=>{
-    
+    let vancolor = van.type;
+    let vantype;
+    let textcolor;
+    if(vancolor === "simple"){
+        vantype = "green";
+        textcolor = "white"
+    }else if(vancolor === "rugged"){
+        vantype = "yellow";
+        textcolor = "black";
+    }else{
+        vantype = "pink";
+        textcolor = "black"
+    }
+    const styles = {
+        backgroundColor: vantype,
+        color: textcolor
+    }
         return <div className='van' key={van.id}>
+            <Link to={van.id}>
             <img src={van.imageUrl} className='vanimg' />
             <div className='name-price'>
                 <p>{van.name}</p>
-                <p>{van.price}</p>
+                <p>{`$${van.price}`}</p>
             </div>
-            <button className='typebtn'>{van.type}</button>
+            <button className='typebtn' style={styles}>{van.type}</button>
+            </Link>
         </div>
 
 })

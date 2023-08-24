@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: antiquewhite;
 }
 
 section {
@@ -14,7 +13,6 @@ ul {
     list-style-type: none;
     margin: 20px 10px;
 }
-
 li {
     display: inline-block;
     padding: 6px 5px;
@@ -23,7 +21,7 @@ li {
 li > a {
     text-decoration: none;
     font-size: small;
-    font-weight: 100;
+    font-weight: 500;
 }
 .navbar {
     display: flex;
@@ -31,6 +29,7 @@ li > a {
     justify-content: space-between;
     background-color: antiquewhite;
     flex-wrap: nowrap;
+    box-shadow: 4px 4px 3px gray;
 }
 
 .header-title {
@@ -141,14 +140,32 @@ li > a {
     margin-right: 20px;
     margin-bottom: 10px;
 }
+.name-price2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: larger;
+}
 
 .typebtn {
     margin-bottom: 15px;
-    background-color: orange;
-    color: white;
     border: none;
     padding: 3px 6px;
-    font-weight: 500;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.typebtn2 {
+    margin-bottom: 15px;
+    border: none;
+    padding: 6px 18px;
+    font-weight: 600;
+    border-radius: 3px;
+    margin-left: 25px;
 }
 .exploreo {
     margin: 20px;
@@ -161,4 +178,26 @@ li > a {
     border-radius: 3px;
     box-shadow: 3px 3px 2px gray;
     cursor: pointer;
+}
+.van > a {
+    text-decoration: none;
+}
+.name-price > p {
+    font-weight: 600;
+}
+.vanimg2 {
+    width: 90%;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    display: block;
+}
+.description {
+    margin-left: 25px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    margin-top: 20px;
 }
