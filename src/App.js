@@ -14,7 +14,7 @@ function App() {
         <section>
         
         </section>
-        <div className="footer">2023 Footer</div>
+       
     </div>
   );
 }

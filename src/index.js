@@ -13,25 +13,35 @@ import Dashboard from './pages/Host/Dashboard';
 import Reviews from './pages/Host/Reviews';
 import Income from './pages/Host/Income';
 import HostLayout from './pages/Host/HostLayout';
+import Van from './pages/Van';
+import Vand from './pages/Host/Vand';
+import Details from './pages/Host/Details';
+import Photos from './pages/Host/Photos';
+import Pricing from './pages/Host/Pricing';
+import Notfound from './pages/Notfound';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
-      <Route>
-        <Route path='/' element={<Layout />}>
+      <Route path='/' element={<Layout />}>
           <Route index element={<App />} />
-          <Route path='/host' element={<HostLayout />} >
-            <Route path='/host' element={<Dashboard />} />
-            <Route path='/host/income' element={<Income />} />
-            <Route path='/host/reviews' element={<Reviews />} />
+          <Route path='host' element={<HostLayout />} >
+            <Route index element={<Dashboard />} />
+            <Route path='income' element={<Income />} />
+            <Route path='van' element={<Van />} />
+            <Route path='van/:id/' element={<Vand />}>
+              <Route index element={<Details />} />
+              <Route path='pricing' element={<Pricing />} />
+              <Route path='photos' element={<Photos />} />
+            </Route>
+            <Route path='reviews' element={<Reviews />} />
           </Route>
-          <Route path='/vans' element={<Vans />} />
-          <Route path='/vans/:id' element={<Vandetails />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<Dashboard />} />
-        </Route>
+          <Route path='vans' element={<Vans />} />
+          <Route path='vans/:id' element={<Vandetails />} />
+          <Route path='contact' element={<Contact />} />
+          <Route path='about' element={<About />} />
+          <Route path='*' element={<Notfound />} />
       </Route>
     </Routes>
     </BrowserRouter>

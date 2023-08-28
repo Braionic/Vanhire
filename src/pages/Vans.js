@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useSearchParams } from 'react-router-dom'
 export default function Vans() {
-    const [Data, setData] = useState([])
+    const [Data, setData] = useState(()=>[])
+    const [searchparams, setsearchparams] = useSearchParams()
+    
+    const typeFilter = searchparams.get("type");
+    console.log(typeFilter)
     useEffect(()=>{
         fetch("/api/vans")
         .then((res)=> res.json())
         .then((data)=> setData(data.vans))
     }, [])
-
-let van = Data.map((van)=>{
+const styless = {
+    textDecoration: "underline",
+    color: "red"
+}
+    let filterperson = typeFilter? Data.filter((val)=>val.type === typeFilter): Data
+    let van = filterperson.map((van)=>{
     let vancolor = van.type;
     let vantype;
     let textcolor;
@@ -27,7 +35,7 @@ let van = Data.map((van)=>{
         color: textcolor
     }
         return <div className='van' key={van.id}>
-            <Link to={van.id}>
+            <Link to={van.id} state={{search: searchparams.toString(), type: typeFilter}}>
             <img src={van.imageUrl} className='vanimg' />
             <div className='name-price'>
                 <p>{van.name}</p>
@@ -38,12 +46,19 @@ let van = Data.map((van)=>{
         </div>
 
 })
+
   return (
     <div className='mainvans'>
     <h3 className='exploreo'>Explore our van options</h3>
-    {Data.map((types)=>{
-        return <button className='typebutton' key={types.id}>{types.type}</button>
-    })}
+    <div className='types'>
+        <ul>
+            <li><button onClick={()=> setsearchparams({type: "rugged"})} className={`typebutton rugged ${typeFilter==="rugged" && "selected"}`} >Rugged</button></li>
+            <li><button onClick={()=> setsearchparams({type: "simple"})} className={`typebutton simple ${typeFilter==="simple" && "selected"}`}  >Simple</button></li>
+            <li><button onClick={()=> setsearchparams({type: "luxury"})} className={`typebutton luxury ${typeFilter==="luxury" && "selected"}`} >Luxury</button></li>
+        </ul>
+        {typeFilter &&<button onClick={()=> setsearchparams({})} className='typebutton'>Clear</button>}
+    </div>
+    
     <div className='vanscontainer'>
         {van}
     </div>

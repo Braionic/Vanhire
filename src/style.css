@@ -2,12 +2,13 @@
     box-sizing: border-box;
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
 }
 
 section {
     padding: 25px;
     background-color: antiquewhite;
-    height: 100vh;
+    min-height: 100%;
 }
 ul {
     list-style-type: none;
@@ -83,6 +84,7 @@ li > a {
     width: 100%;
     padding: 12px;
     font-size: small;
+
 }
 .mainpanel {
     background-image: url('./images//image54.png');
@@ -128,6 +130,13 @@ li > a {
 .vanimg {
     width: 150px;
     height: 150px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+.vanimg1 {
+    width: 100px;
+    height: 100px;
     margin-right: 20px;
     margin-bottom: 10px;
     border-radius: 6px;
@@ -200,4 +209,103 @@ li > a {
     line-height: 18px;
     font-weight: 600;
     margin-top: 20px;
+}
+.dashboard {
+    height: 80vh;
+}
+.activelink {
+    color: #161616;
+    font-weight: bold;
+    text-decoration: underline;
+}
+ul .dashb:first-child {
+    color: black;
+}
+.smvanimg {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+.vanthumb {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    background-color:aliceblue;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px;
+}
+.lgbb {
+    font-size: xx-large;
+    color: red;
+}
+.vanrow > a {
+    text-decoration: none;
+}
+.vandp {
+    background-color: aliceblue;
+}
+.vandb {
+    padding: 3px 6px;
+    
+}
+.vandes {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.named{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.null {
+    color: yellow;
+}
+.types {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.types > button {
+    margin-right: 20px;
+}
+.types > button:hover {
+    background-color: blueviolet;
+}
+.rugged:hover {
+    background-color: red;
+}
+.luxury:hover {
+    background-color: aquamarine;
+}
+ .simple:hover {
+    background-color:rgb(169, 116, 18);
+ }
+ .selected {
+    color:cadetblue;
+    background-color: deeppink;
+}
+.div404 {
+    padding: 40px;
+    height: 80vh;
+    background-color:antiquewhite;
+}
+.div404 > a {
+    width: 80%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+    padding: 10px 50px;
 }

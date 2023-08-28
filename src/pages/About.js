@@ -22,7 +22,6 @@ export default function About() {
             </button>
            </div>
         </section>
-        <div className="footer">2023 Footer</div>
     </div>
   )
 }

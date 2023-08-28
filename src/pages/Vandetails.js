@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 export default function Vandetails() {
   const [Data, setData] = useState(()=>[])
   const myid = useParams()
@@ -8,7 +8,8 @@ export default function Vandetails() {
     .then((res)=>res.json())
     .then((data)=>setData(data.vans))
   }, [myid.id])
-  
+  let location = useLocation()
+  console.log(location.state.search)
   let vancolor = Data.type;
   let vantype;
   let textcolor;
@@ -26,8 +27,11 @@ export default function Vandetails() {
       backgroundColor: vantype,
       color: textcolor
   }
+  const search = location.state?.search || "";
+  const type = location.state?.type || "all"
   return (
     <section>
+        <Link to={`..?${search}`} relative="path">{`Back to ${type && type} Vans`}</Link>
    <div className='vanitems'>
     <img className='vanimg2' src={Data.imageUrl} />
     <div className='name-price2'>
