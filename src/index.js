@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {  Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Vans from './pages/Vans';
@@ -19,11 +19,11 @@ import Details from './pages/Host/Details';
 import Photos from './pages/Host/Photos';
 import Pricing from './pages/Host/Pricing';
 import Notfound from './pages/Notfound';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Routes>
+import { loader } from './pages/Vans';
+import Error from './pages/Error';
+
+const router = createBrowserRouter(createRoutesFromElements(
+    
       <Route path='/' element={<Layout />}>
           <Route index element={<App />} />
           <Route path='host' element={<HostLayout />} >
@@ -37,15 +37,17 @@ root.render(
             </Route>
             <Route path='reviews' element={<Reviews />} />
           </Route>
-          <Route path='vans' element={<Vans />} />
+          <Route path='vans' loader={loader} errorElement={<Error />} element={<Vans />} />
           <Route path='vans/:id' element={<Vandetails />} />
           <Route path='contact' element={<Contact />} />
           <Route path='about' element={<About />} />
           <Route path='*' element={<Notfound />} />
       </Route>
-    </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+    
+))
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <RouterProvider router={router} />
 );
 
 

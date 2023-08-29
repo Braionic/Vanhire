@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useSearchParams } from 'react-router-dom'
+import { Link, NavLink, useSearchParams, useLoaderData } from 'react-router-dom'
+import { myapi } from '../api';
+function loader(){
+    return myapi();
+}
+
 export default function Vans() {
     const [Data, setData] = useState(()=>[])
     const [searchparams, setsearchparams] = useSearchParams()
     
+    const data = useLoaderData()
+    console.log(data)
     const typeFilter = searchparams.get("type");
     console.log(typeFilter)
-    useEffect(()=>{
-        fetch("/api/vans")
-        .then((res)=> res.json())
-        .then((data)=> setData(data.vans))
-    }, [])
+    //useEffect(()=>{
+     //   fetch("/api/vans")
+    //    .then((res)=> res.json())
+    //    .then((data)=> setData(data.vans))
+   // }, [])
 const styless = {
     textDecoration: "underline",
     color: "red"
 }
-    let filterperson = typeFilter? Data.filter((val)=>val.type === typeFilter): Data
+    let filterperson = typeFilter? data.filter((val)=>val.type === typeFilter): data
     let van = filterperson.map((van)=>{
     let vancolor = van.type;
     let vantype;
@@ -65,3 +72,4 @@ const styless = {
     </div>
   )
 }
+export {loader};
