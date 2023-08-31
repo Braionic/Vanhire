@@ -1,14 +1,16 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../api'
+import { requireAuth } from '../utills/utills'
+async function Loader(){
+    await requireAuth()
+    return getHostVans()
+}
 export default function Van() {
-const [Data, setData] = useState([])
-    useEffect(()=>{
-        fetch("/api/vans/")
-        .then((res)=> res.json())
-        .then((data)=> setData(data.vans))
-    }, [])
-    let myvans = Data.map((van)=> {
+const Data = useLoaderData()
+    
+    let myvans = Data?.map((van)=> {
         return <Link to={van.id}>
             <div className='vanthumb' key={van.id}>
             
@@ -30,3 +32,4 @@ const [Data, setData] = useState([])
     
   )
 }
+export {Loader}

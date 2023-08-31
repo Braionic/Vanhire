@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
+import { myapi } from '../api'
+
+export function Loader({ params }){
+    console.log(params.id)
+    return myapi(params.id)
+
+}
+
 export default function Vandetails() {
-  const [Data, setData] = useState(()=>[])
-  const myid = useParams()
-  useEffect(()=>{
-    fetch(`/api/vans/${myid.id}`)
-    .then((res)=>res.json())
-    .then((data)=>setData(data.vans))
-  }, [myid.id])
+
+  const Data = useLoaderData()
+  
   let location = useLocation()
   console.log(location.state.search)
   let vancolor = Data.type;
@@ -43,4 +48,5 @@ export default function Vandetails() {
    </div>
    </section>
   )  
-}
+} 
+//export {Loader}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink, useSearchParams, useLoaderData } from 'react-router-dom'
 import { myapi } from '../api';
-function loader(){
+import { requireAuth } from '../utills/utills';
+async function loader(){
+    await requireAuth()
     return myapi();
 }
 
 export default function Vans() {
-    const [Data, setData] = useState(()=>[])
     const [searchparams, setsearchparams] = useSearchParams()
     
     const data = useLoaderData()
