@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Navigate, redirect, useLoaderData, useSearchParams } from 'react-router-dom';
+import { loginUser } from '../api';
+
 export function myloader({request}){
   return new URL(request.url).searchParams?.get("message")
 }
@@ -23,9 +25,11 @@ return setFormData((oldval)=>{
 
 function handlesubmit(event){
   event.preventDefault()
-  if(formData.email === "henry@gmail.com" && formData.password === "welcome"){
-    return setlogintest("login successfull")
+  if(formData.email === "b@b.com" && formData.password === "p123"){
+      //setlogintest("login successfull")
     //return <Navigate to="/about" />
+      loginUser(formData).then((data)=> console.log(data))
+      return;
     
   }else{
     return setlogintest("wrong")
