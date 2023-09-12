@@ -32,7 +32,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Auth from "./components/Auth";
 import { Loader as pricingloader } from "./pages/Host/Pricing";
-
+import { action as loginaction } from "./pages/Login";
 import { Loader as detailsloader } from "./pages/Vandetails";
 import { Loader as vanloader } from "./pages/Van";
 import { Loader as DDD } from "./pages/Host/Vand";
@@ -87,7 +87,7 @@ const router = createBrowserRouter(
 
       <Route path="contact" element={<Contact />} />
 
-      <Route loader={myloader} path="/login" element={<Login />} />
+      <Route loader={myloader} action={loginaction} path="/login" element={<Login />} />
 
       <Route
         path="protected"

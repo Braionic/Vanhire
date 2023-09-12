@@ -1,6 +1,9 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 export default function Header() {
+  function handlelogout(){
+    localStorage.removeItem("isloggedin")
+  }
   return (
     <div>
         <div className='navbar'>
@@ -12,6 +15,7 @@ export default function Header() {
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/host">Host</NavLink></li>
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/contact">Contact</NavLink></li>
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/about">About</NavLink></li>
+            <li><button onClick={handlelogout}>X</button></li>
             </ul>
         </nav>
         </div> 

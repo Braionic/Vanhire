@@ -1,22 +1,10 @@
 import React, { useState } from 'react'
-import { Navigate, redirect, useLoaderData, useSearchParams, Form, json } from 'react-router-dom';
+import { Navigate, redirect, useLoaderData, useSearchParams } from 'react-router-dom';
 import { loginUser } from '../api';
-import { requireAuth } from '../utills/utills';
-export function myloader({request}){
-  return new URL(request.url).searchParams?.get("message")
-}
 
-export async function action({request}){
-  const formData = await request.formData();
-  const email = formData.get("email")
-  const password = formData.get("password")
-  const man = {email, password}
-  const data = await loginUser({email, password})
-console.log(data)
-  localStorage.setItem("isloggedin", "true")
-  const response = redirect("/host");
-      response.body = true; // It's silly, but it worksdf
-      return response;
+export function myloader({request}){
+  console.log(request)
+  return new URL(request.url).searchParams?.get("message")
 }
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -74,11 +62,11 @@ function handlesubmit(event){
       <h2>{state}</h2>
       <h1>{error?.message}</h1>
       <h3 style={{color: "red"}}>{mymessage && mymessage}</h3>
-        <Form method="post" replace>
-        <input type='email' placeholder='email' name='email'   /><br></br>
-        <input type='password' placeholder='password' name='password'   />
+        <form onSubmit={(event)=> handlesubmit(event)}>
+        <input type='email' placeholder='email' name='email' onChange={(e)=> handlechange(e)} value={formData.name} /><br></br>
+        <input type='password' placeholder='password' name='password' onChange={(e)=> handlechange(e)} value={formData.password} />
         {state === "submitting"?<button className='signinbutton' style={{opacity: 0.5}} disabled>Submitting</button>:<button className='signinbutton'>Log in</button>}
-        </Form>
+        </form>
       
       </div>
       </section>
