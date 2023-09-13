@@ -14,22 +14,22 @@ export default function Vandetails() {
   const Data = useLoaderData()
   
   let location = useLocation()
-  console.log(location.state.search)
-  let vancolor = Data.type;
-  let vantype;
+  console.log(location)
+  let vantype = Data.type;
+  let vancolor;
   let textcolor;
-  if(vancolor === "simple"){
-      vantype = "green";
+  if(vantype === "simple"){
+      vancolor = "green";
       textcolor = "white"
-  }else if(vancolor === "rugged"){
-      vantype = "yellow";
+  }else if(vantype === "rugged"){
+      vancolor = "yellow";
       textcolor = "black";
   }else{
-      vantype = "pink";
+      vancolor = "pink";
       textcolor = "black"
   }
   const styles = {
-      backgroundColor: vantype,
+      backgroundColor: vancolor,
       color: textcolor
   }
   const search = location.state?.search || "";

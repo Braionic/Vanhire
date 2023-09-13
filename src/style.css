@@ -345,3 +345,7 @@ input[type="email"], input[type="password"] {
     border: none;
     outline: none;
   }
+
+  button:disabled {
+    background-color: rgb(172, 143, 91);
+  }

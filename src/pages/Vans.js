@@ -25,21 +25,21 @@ const styless = {
 }
     let filterperson = typeFilter? data.filter((val)=>val.type === typeFilter): data
     let van = filterperson.map((van)=>{
-    let vancolor = van.type;
-    let vantype;
+    let vantype = van.type;
+    let vancolor;
     let textcolor;
-    if(vancolor === "simple"){
-        vantype = "green";
+    if(vantype === "simple"){
+        vancolor = "green";
         textcolor = "white"
-    }else if(vancolor === "rugged"){
-        vantype = "yellow";
+    }else if(vantype === "rugged"){
+        vancolor = "yellow";
         textcolor = "black";
     }else{
-        vantype = "pink";
+        vancolor = "pink";
         textcolor = "black"
     }
     const styles = {
-        backgroundColor: vantype,
+        backgroundColor: vancolor,
         color: textcolor
     }
         return <div className='van' key={van.id}>
