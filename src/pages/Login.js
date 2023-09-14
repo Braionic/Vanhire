@@ -5,22 +5,24 @@ import { requireAuth } from '../utills/utills';
 export function myloader({request}){
   return new URL(request.url).searchParams?.get("message")
 }
+
 const sleep = (timeout)=>{
   return new Promise((resolve)=> setTimeout((resolve), timeout))
 }
+
 export async function action({request}){
   const formData = await request.formData();
   const email = formData.get("email")
   const password = formData.get("password")
   //const man = {email, password}
   //loginUser({email, password}).then((data)=> console.log(data))
-  
+  const pathname = new URL(request.url).searchParams.get('redirectTo')
 try {
   await sleep(1000)
   if(email === "b@b.com" && password === "p123"){
     const data = loginUser({email, password})
     localStorage.setItem("isloggedin", "true")
-    const response = redirect("/host");
+    const response = redirect(`${pathname? pathname: "/host"}`);
       response.body = true; // It's silly, but it worksdf
       return response;
   }

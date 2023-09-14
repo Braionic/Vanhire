@@ -5,17 +5,18 @@ import { requireAuth } from '../../utills/utills';
 import { getHostVans } from '../../api';
 
 
-export async function Loader({ params }){
-  await requireAuth()
+export async function vanDLoader({ params, request }){
+  await requireAuth(request)
+  console.log(params)
   return getHostVans(params.id)
 }
 
 
 export default function Vand() {
-const Data = useLoaderData()
+//const Data = useLoaderData()
    
-   //const Data = useLoaderData();
-console.log(Data)
+   const Data = useLoaderData();
+console.log(Data.name)
     const styles = {
         fontWeight: "bold",
         fontSize: "18px",

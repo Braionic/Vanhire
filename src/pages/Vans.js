@@ -3,7 +3,6 @@ import { Link, NavLink, useSearchParams, useLoaderData } from 'react-router-dom'
 import { myapi } from '../api';
 import { requireAuth } from '../utills/utills';
 async function loader(){
-    await requireAuth()
     return myapi();
 }
 

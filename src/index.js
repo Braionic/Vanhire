@@ -35,46 +35,42 @@ import { Loader as pricingloader } from "./pages/Host/Pricing";
 import { action as loginaction } from "./pages/Login";
 import { Loader as detailsloader } from "./pages/Vandetails";
 import { Loader as vanloader } from "./pages/Van";
-import { Loader as DDD } from "./pages/Host/Vand";
+import { vanDLoader } from "./pages/Host/Vand";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route  index element={<App />} />
       <Route path="host" element={<HostLayout />}>
-        <Route loader={async ()=>requireAuth()} index element={<Dashboard />} />
+        <Route loader={async ({request})=>requireAuth(request)} index element={<Dashboard />} />
         <Route
-          loader={async () => await requireAuth()}
+          loader={async ({request}) => await requireAuth(request)}
           path="income"
           element={<Income />}
         />
 
         <Route loader={vanloader} path="van" element={<Van />} />
-        <Route errorElement={<Error />} path="van/:id/" element={<Vand />}>
+        <Route loader={vanDLoader} errorElement={<Error />} path="van/:id" element={<Vand />}>
 
           <Route
-            loader={async () => {
-              await requireAuth();
-            }}
-            index
+          index
+            loader={async ({request}) => await requireAuth(request)}
             element={<Details />}
           />
 
           <Route
-            loader={pricingloader}
+            loader={async({request})=> await requireAuth(request)}
             path="pricing"
             element={<Pricing />}
           />
           <Route
-            loader={async () => {
-              return null
-            }}
+            loader={async ({request}) => await requireAuth(request)}
             path="photos"
             element={<Photos />}
           />
         </Route>
-        <Route loader={async () => {
-              return null
-            }} path="reviews" element={<Reviews />} />
+        <Route loader={async ({request}) => await requireAuth(request)} 
+        path="reviews" element={<Reviews />} />
       </Route>
 
       <Route

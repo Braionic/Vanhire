@@ -1,14 +1,11 @@
 import { React, useEffect, useState } from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import { useLoaderData, useParams,useOutletContext } from 'react-router-dom'
 import { requireAuth } from '../../utills/utills'
 import { getHostVans } from '../../api'
 
-export async function Loader({params}){
-  await requireAuth()
-  return getHostVans(params.id)
-}
+
 export default function Details() {
-  const Data = useLoaderData()
+  const {Data} = useOutletContext()
   return (
     <div className='vandes'>
       <h4>Name: {Data.name}</h4><br></br>
