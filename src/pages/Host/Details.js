@@ -6,10 +6,13 @@ import { getHostVans } from '../../api'
 
 export default function Details() {
   const {Data} = useOutletContext()
+  console.log(Data)
   return (
     <div className='vandes'>
       <h4>Name: {Data.name}</h4><br></br>
-      <h4>description: {Data.description}</h4>
+      <h4>description: {Data.description}</h4><br></br>
+      <h4>Type: {Data.type}</h4><br></br>
+      <h4>Visibility: Public</h4>
       </div>
   )
 }

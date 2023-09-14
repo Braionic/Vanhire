@@ -19,6 +19,7 @@ const Data = useLoaderData()
                 <div>
                     <h4>{van.name}</h4>
                     <p>{`$${van.price}`}</p>
+                    
                 </div>
             </div>
             </Link>
