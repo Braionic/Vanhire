@@ -8,7 +8,7 @@ export default function Pricing() {
   return (
     <section style={{backgroundColor: "aliceblue"}}>
     <div>
-      <p style={{fontWeight: "bold"}}>{`$${Data.Data.price}`}</p>
+      <p style={{fontWeight: "bold"}}>{`$${Data.hostvandetailsloader.price}`}</p>
     </div>
     </section>
   )

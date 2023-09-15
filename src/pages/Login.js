@@ -41,7 +41,7 @@ console.log(actionData)
 console.log(mymessage)
 const [searchparams, setsearchparams] = useSearchParams()
 //const mysearch = searchparams?.get("message");
-const [logintest, setlogintest] = useState()
+
 
 
 
@@ -50,7 +50,7 @@ const [logintest, setlogintest] = useState()
     <div className='mainLoginContainer'>
       <h1 className='loginheader'>Log in to your account</h1>
       
-      <h3>{logintest}</h3>
+
       <h4 style={{textAlign: "center"}}>{actionData}</h4>
       <h3 style={{color: "red"}}>{mymessage && mymessage}</h3>
         <Form method="post" replace>

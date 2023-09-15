@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/Header';
 import logo from '../images/image55.png';
 export default function About() {
   return (
