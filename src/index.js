@@ -49,7 +49,7 @@ const router = createBrowserRouter(
           element={<Income />}
         />
 
-        <Route loader={vanloader} path="van" element={<Van />} />
+        <Route loader={vanloader} path="van" element={<Van />} errorElement={<Error />} />
         <Route
           loader={vanDLoader}
           errorElement={<Error />}
@@ -86,7 +86,7 @@ const router = createBrowserRouter(
         errorElement={<Error />}
         element={<Vans />}
       />
-      <Route loader={detailsloader} path="vans/:id" element={<Vandetails />} />
+      <Route loader={detailsloader} path="vans/:id" element={<Vandetails />} errorElement={<Error />} />
 
       <Route path="contact" element={<Contact />} />
 
