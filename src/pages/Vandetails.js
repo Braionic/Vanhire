@@ -1,14 +1,13 @@
 import React, { useEffect, useState, Suspense } from 'react'
 import { useParams, Link, defer, Await, useLocation } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'
-import { myapi } from '../api'
+import { getVan, myapi } from '../api'
+import { myapi2 } from '../api'
 
 export function Loader({ params }){
     console.log(params.id)
-    const vandetailsPromise = myapi(params.id)
+    const vandetailsPromise = getVan(params.id);
     return {vandetails: vandetailsPromise}
-    
-
 }
 
 export default function Vandetails() {
