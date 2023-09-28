@@ -1,3 +1,4 @@
+/*
 import { createServer, Model, Response } from "miragejs"
 
 
@@ -63,3 +64,4 @@ createServer({
         })
     }
 })
+*/

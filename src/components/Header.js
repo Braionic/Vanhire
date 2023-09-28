@@ -1,8 +1,11 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { auth } from '../api'
+import { signOut } from 'firebase/auth'
 export default function Header() {
-  function handlelogout(){
-    localStorage.removeItem("isloggedin")
+  async function handlelogout(){
+    const signoutData = await signOut(auth)
+    console.log(signoutData)
   }
   return (
     <div>
@@ -15,6 +18,7 @@ export default function Header() {
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/host">Host</NavLink></li>
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/contact">Contact</NavLink></li>
             <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/about">About</NavLink></li>
+            {auth.currentUser?.email && <li><NavLink className={({isActive})=> isActive? "activelink": null} to="/profile">Profile</NavLink></li>}
             <li><button onClick={handlelogout}>X</button></li>
             </ul>
         </nav>

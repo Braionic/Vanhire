@@ -32,11 +32,15 @@ import { action as loginaction } from "./pages/Login";
 import { Loader as detailsloader } from "./pages/Vandetails";
 import { Loader as vanloader } from "./pages/Van";
 import { vanDLoader } from "./pages/Host/Vand";
+import Signup, { loader } from "./pages/Signup";
+import { action as signupAction } from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<App />} />
+      <Route path="/profile" element={<Profile />} loader={async({request})=> requireAuth(request)} errorElement={<Error />} />
       <Route path="host" element={<HostLayout />}>
         <Route
           loader={async ({ request }) => requireAuth(request)}
@@ -89,13 +93,14 @@ const router = createBrowserRouter(
       <Route loader={detailsloader} path="vans/:id" element={<Vandetails />} errorElement={<Error />} />
 
       <Route path="contact" element={<Contact />} />
-
+    <Route path="/signup" element={<Signup />} loader={loader} action={signupAction} errorElement={<Error />}/>
       <Route
         loader={myloader}
         action={loginaction}
         path="/login"
         element={<Login />}
       />
+      
 
       <Route path="about" element={<About />} />
 

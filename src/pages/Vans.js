@@ -1,9 +1,9 @@
-import React, { useEffect, useState, Suspense } from 'react'
-import { Link, NavLink, useSearchParams, defer, Await, useLoaderData } from 'react-router-dom'
+import React, { Suspense } from 'react'
+import { Link, useSearchParams, defer, Await, useLoaderData } from 'react-router-dom'
 import { myapi } from '../api';
 import { requireAuth } from '../utills/utills';
 async function loader(){
-    return {mainvans: myapi()}
+    return defer({mainvans: myapi()})
 }
 
 export default function Vans() {

@@ -10,7 +10,6 @@ async function Loader({request}){
 export default function Van() {
 const Data = useLoaderData()
     
-    
   return (
     <section>
         <div className='vanrow'>

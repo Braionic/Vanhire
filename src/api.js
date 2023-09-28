@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getFirestore, collection, getDocs, doc, getDoc} from "firebase/firestore/lite"
+import {getFirestore, collection, getDocs, doc, getDoc, addDoc} from "firebase/firestore/lite"
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, getAuth} from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,8 +19,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+export const auth = getAuth()
 const vanscollection = collection(db, 'vans')
-export async function myapi(id){
+export async function myapi(){
     
 const vansSnapshot = await getDocs(vanscollection)
 const dataArr = vansSnapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
@@ -32,6 +34,7 @@ export async function getVan(id){
     console.log(colsnapshot.data(), colsnapshot.id)
     return {...colsnapshot.data(), id: colsnapshot.id}
 }
+
 /*
 export async function myapi(id){
     const url = id? `/api/vans/${id}`: "/api/vans";
@@ -76,7 +79,15 @@ export async function getHostVansDetails(id){
     
     return {...hostvansnap.data(), id: hostvansnap.id};
 }
-
+export async function loginUser(creds){
+    try {
+        const data = await createUserWithEmailAndPassword(auth, creds.email, creds.password)
+        console.log(data)
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+/*
 export async function loginUser(creds) {
     const res = await fetch("/api/login",
         { method: "post", body: JSON.stringify(creds) }
@@ -92,4 +103,16 @@ export async function loginUser(creds) {
     }
 
     return data
+}
+*/
+export async function handlesignup(email, password){
+console.log(email, password)
+   return createUserWithEmailAndPassword(auth, email, password).then((data)=> console.log(data.user)).catch((err)=> console.log(err.message))
+}
+
+export async function add(){
+    addDoc(vanscollection, {
+        username: "Hello",
+        age: 30
+    }).then((data)=> console.log(data)).catch((err)=> err.message)
 }
