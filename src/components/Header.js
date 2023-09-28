@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, redirect } from 'react-router-dom'
 import { auth } from '../api'
 import { signOut } from 'firebase/auth'
 export default function Header() {
   async function handlelogout(){
     const signoutData = await signOut(auth)
+    return window.location.reload(signoutData)
     console.log(signoutData)
   }
   return (

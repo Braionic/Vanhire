@@ -46,7 +46,7 @@ export async function action({ request }) {
     //localStorage.setItem("isloggedin", "true")
     return redirect(`${pathname ? pathname : "/host"}`);
   } catch (err) {
-    console.log(err.message);
+    return err.message;
   }
   return null;
 }
@@ -69,7 +69,7 @@ export default function Login() {
       const data = await signInWithPopup(auth, provider);
       console.log(data.user);
     } catch (error) {
-      console.log(error.message);
+      return error.message;
     }
   }
 
@@ -133,4 +133,12 @@ return setFormData((oldval)=>{
   return {...oldval, [name]: value}
 })
 }
+
+
+function(error){
+switch (error.code)
+      case "INVALID_USER":
+           $scope.message = "custom message"
+       // etc
+  }
 */
