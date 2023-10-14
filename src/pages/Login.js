@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import {
-  Navigate,
   redirect,
   useLoaderData,
   useSearchParams,
   Form,
-  json,
   useActionData,
   useNavigation,
   Link,
 } from "react-router-dom";
 import { auth, loginUser } from "../api";
-import { requireAuth } from "../utills/utills";
 import {
   GoogleAuthProvider,
-  confirmPasswordReset,
   signInWithPopup,
-  getAuth,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 export function myloader({ request }) {
@@ -51,12 +46,13 @@ export async function action({ request }) {
   return null;
 }
 export default function Login() {
+  const [searchparams, setsearchparams] = useSearchParams();
   const mymessage = useLoaderData();
   const actionData = useActionData();
   const formState = useNavigation();
 
   console.log(mymessage);
-  const [searchparams, setsearchparams] = useSearchParams();
+ 
   //const mysearch = searchparams?.get("message");
 
   console.log(auth.currentUser?.displayName);

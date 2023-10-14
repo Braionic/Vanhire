@@ -4,10 +4,10 @@ import { useLoaderData } from 'react-router-dom'
 import { getVan, myapi } from '../api'
 import { myapi2 } from '../api'
 
-export function Loader({ params }){
+export async function Loader({ params }){
     console.log(params.id)
     const vandetailsPromise = getVan(params.id);
-    return {vandetails: vandetailsPromise}
+    return defer({vandetails: vandetailsPromise})
 }
 
 export default function Vandetails() {
