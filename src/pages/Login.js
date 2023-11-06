@@ -52,11 +52,11 @@ export default function Login() {
   const formState = useNavigation();
 
   console.log(mymessage);
- 
+
   //const mysearch = searchparams?.get("message");
 
   console.log(auth.currentUser?.displayName);
-  
+
   async function handleGoogleSign() {
     console.log(auth.currentUser?.displayName);
     console.log(auth.currentUser?.email);
